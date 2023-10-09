@@ -1,3 +1,3 @@
 import userController from "./user.js";
-
-export { userController };
+import sparseController from "./sparse.js";
+export { userController, sparseController};
