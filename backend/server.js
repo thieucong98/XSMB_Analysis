@@ -1,6 +1,6 @@
 import express from "express";
 import * as dotenv from "dotenv";
-import { userRouter, productRouter } from "./routes/index.js";
+import { userRouter, spareRouter } from "./routes/index.js";
 import ConnectDB from "./database/database.js";
 // Add Authorization
 
@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/users", userRouter); // localhost:9999/users
-app.use("/products", productRouter); // localhost:9999/products
+app.use("/sparses", spareRouter); // localhost:9999/products
 
 const port = process.env.PORT || 8080;
 
