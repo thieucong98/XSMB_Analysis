@@ -1,6 +1,6 @@
 import express from "express";
 import * as dotenv from "dotenv";
-import { userRouter, spareRouter } from "./routes/index.js";
+import routes from "./routes/index.js";
 import ConnectDB from "./database/database.js";
 // Add Authorization
 
@@ -16,8 +16,7 @@ app.get("/", (req, res) => {
   res.send("Hello RESTful API.");
 });
 
-app.use("/users", userRouter); // localhost:9999/users
-app.use("/sparses", spareRouter); // localhost:9999/products
+app.use(routes); // localhost:9999/users
 
 const port = process.env.PORT || 8080;
 

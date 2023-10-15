@@ -23,6 +23,7 @@
     "express-validator": "^7.0.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.5.4",
+    "puppeteer": "^21.3.8",
     "validator": "^13.11.0"
   },
   "devDependencies": {
