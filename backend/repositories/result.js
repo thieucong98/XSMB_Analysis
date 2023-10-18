@@ -1,80 +1,57 @@
-import puppeteer from "puppeteer";
+import Result from '../models/Result.js';
 
-
-const getDailyLotteryResults = async (date) => {
-  const browser = await puppeteer.launch({
-    ignoreHTTPSErrors: true,
-    headless: true,
-  });
-  const page = await browser.newPage();
-
-    await page.goto(
-      `https://xoso.com.vn/xsmb-${
-        date.getDate() >= 10
-          ? date.getDate()
-          : "0" + date.getDate()
-      }-${
-        date.getMonth() + 1 >= 10
-          ? date.getMonth() + 1
-          : "0" + (date.getMonth() + 1)
-      }-${date.getFullYear()}.html`,
-      {
-        waitUntil: "load",
-      }
-    );
-
+const create = async (
+    date,
+    special,
+    prize1,
+    prize2,
+    prize3,
+    prize4,
+    prize5,
+    prize6,
+    prize7
+) => {
     try {
-      const allPrize = await page.evaluate(() => {
-        const special = document
-          .querySelectorAll("span.special-prize")[0]
-          .textContent.trim();
-
-        const prize1 = document
-          .querySelectorAll("span.prize1")[0]
-          .textContent.trim();
-
-        let prize2 = [];
-        document.querySelectorAll("span.prize2").forEach((prize) => {
-          prize2 = [...prize2, prize.textContent.trim()];
-        });
-        let prize3 = [];
-        document.querySelectorAll("span.prize3").forEach((prize) => {
-          prize3 = [...prize3, prize.textContent.trim()];
-        });
-        let prize4 = [];
-        document.querySelectorAll("span.prize4").forEach((prize) => {
-          prize4 = [...prize4, prize.textContent.trim()];
-        });
-        let prize5 = [];
-        document.querySelectorAll("span.prize5").forEach((prize) => {
-          prize5 = [...prize5, prize.textContent.trim()];
-        });
-        let prize6 = [];
-        document.querySelectorAll("span.prize6").forEach((prize) => {
-          prize6 = [...prize6, prize.textContent.trim()];
-        });
-        let prize7 = [];
-        document.querySelectorAll("span.prize7").forEach((prize) => {
-          prize7 = [...prize7, prize.textContent.trim()];
-        });
-
-        return {
-          special,
-          prize1,
-          prize2,
-          prize3,
-          prize4,
-          prize5,
-          prize6,
-          prize7,
-        };
-      });
-        console.log(allPrize);
-    } catch {(error)=>{
-      console.log(error);
-    }}
+        const result = await Result.findOneAndUpdate(
+            { draw_date: date },
+            {
+                special_prize: special[0],
+                prize1: prize1[0],
+                prize2_1: prize2[0],
+                prize2_2: prize2[1],
+                prize3_1: prize3[0],
+                prize3_2: prize3[1],
+                prize3_3: prize3[2],
+                prize3_4: prize3[3],
+                prize3_5: prize3[4],
+                prize3_6: prize3[5],
+                prize4_1: prize4[0],
+                prize4_2: prize4[1],
+                prize4_3: prize4[2],
+                prize4_4: prize4[3],
+                prize5_1: prize5[0],
+                prize5_2: prize5[1],
+                prize5_3: prize5[2],
+                prize5_4: prize5[3],
+                prize5_5: prize5[4],
+                prize5_6: prize5[5],
+                prize6_1: prize6[0],
+                prize6_2: prize6[1],
+                prize6_3: prize6[2],
+                prize7_1: prize7[0],
+                prize7_2: prize7[1],
+                prize7_3: prize7[2],
+                prize7_4: prize7[3],
+            },
+            { upsert: true, returnOriginal: false }
+        );
+        return result;
+    } catch (err) {
+        console.error(err);
+        throw err;
+    }
 };
 
-export default{
-  getDailyLotteryResults
-}
+export default {
+    create,
+};
