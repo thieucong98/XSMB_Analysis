@@ -18,10 +18,9 @@ const axiosConfig = {
 
 const crawlData = async (req, res) => {
     // *Before 10 day
-    // const result = now.subtract(10, 'days');
-    // 01 - 10 - 2005;
-    const date = moment.utc('1/10/2005', 'DD/MM/YYYY');
+    const date = moment.utc('10/10/2023', 'DD/MM/YYYY');
     const now = moment.utc();
+    // const date = now.subtract(10, 'days');
     const dates = [];
     while (date.isSameOrBefore(now)) {
         const _date = date.format('DD-MM-YYYY');
