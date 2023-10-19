@@ -2,7 +2,9 @@ import express from 'express';
 import { sparseController } from '../controllers/index.js';
 const spareRouter = express.Router();
 
-spareRouter.get('/', sparseController.getAllSparses);
-spareRouter.post('/insert', sparseController.insertNewSparseRecord);
-spareRouter.get('/countSparse', sparseController.countAllSparses);
-export default spareRouter;
+spareRouter.get('/', sparseController.getAllSparses)
+spareRouter.post('/insert', sparseController.insertNewSparseRecord)
+spareRouter.get('/countSparse', sparseController.countAllSparses)
+spareRouter.get('/countMonthlySparse', sparseController.countMonthlySparse)
+spareRouter.get('/countAllSparsesGan', sparseController.countAllSparsesGan)
+export default spareRouter
