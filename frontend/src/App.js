@@ -20,6 +20,7 @@ import BoardUser from './Pages/board-user.component'
 import ManageBoard from './components/ManagerBoard';
 import ForgetPassword from './Pages/ForgetPassword/ForgetPassword';
 import PostList from './Pages/post/PostList';
+import Result from './Pages/Approved/Approved';
 
 function App() {
   return (
@@ -33,7 +34,7 @@ function App() {
           <Route path='/service' element={<Service />} />
           <Route path='/doctor' element={<Doctors />} />
           <Route path='/contact' element={<Contact />} />
-          <Route path='/approved' element={<Approved />} />
+          <Route path='/result' element={<Result />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='*' element={<NotFound />} />
