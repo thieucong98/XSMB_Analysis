@@ -11,6 +11,10 @@ const PlayNumber = () => {
                 <div className="section-title mt-5">
                         <h1>Ghi Số</h1>
                     </div>
+                    <div>
+                        <h8>Lưu ý: Ghi lô ở đây không sử dụng tiền thật </h8> <br></br>
+                        Ngày ghi: 
+                    </div>
                 </Col>
                 <Col md={12} lg={12} sm={12} className="text-center mb-5">
                     <Link to="/"><button className="btn btn-warning p-3 fw-bold">Go Back</button></Link>
